@@ -15,14 +15,15 @@ namespace AsiNO_DAL.Entities
         public string Email { get; set; }
         public string Address { get; set; }
 
-        public int IdAccount { get; set; }
-
-        public int RateId { get; set; }
-        public Rate Rate { get; set; }
-
-        public DateTime Date { get; set; }
-
         public virtual ApplicationUser ApplicationUser { get; set; }
+        //   public int IdAccount { get; set; }
+
+        // public int RateId { get; set; }
+        //public Rate Rate { get; set; }
+
+        // public DateTime Date { get; set; }
+
+
 
     }
 }

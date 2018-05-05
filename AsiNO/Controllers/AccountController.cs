@@ -35,7 +35,8 @@ namespace AsiNO.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
-        { 
+        {
+            await SetInitialDataAsync();
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO {Email = model.Email, Password = model.Password};
@@ -92,6 +93,18 @@ namespace AsiNO.Controllers
             }
             return View(model);
         }
-       
+        private async Task SetInitialDataAsync()
+        {
+            await UserService.SetInitialData(new UserDTO
+            {
+                Email = "somemail@mail.ru",
+                UserName = "somemail@mail.ru",
+                Password = "ad46D_ewr3",
+                Name = "Семен Семенович Горбунков",
+                Address = "ул. Спортивная, д.30, кв.75",
+                Role = "admin",
+            }, new List<string> { "user", "admin" });
+        }
+
     }
 }
